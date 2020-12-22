@@ -49,7 +49,7 @@ function torcher.place_torch_at(v,pos)
   end
 end
 
-working_villages.register_job("working_villages:job_torcher", {
+working_villages.register_job("hades_villages:job_torcher", {
 	description      = "torcher (working_villages)",
 	long_description = "I'm following the nearest player enlightning his way by placing torches.",
 	inventory_image  = "default_paper.png^working_villages_torcher.png",

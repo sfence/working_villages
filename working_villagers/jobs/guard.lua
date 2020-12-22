@@ -3,7 +3,7 @@ local co_command = working_villages.require("job_coroutines").commands
 
 --modes: stationary,escort,patrol,wandering
 
-working_villages.register_job("working_villages:job_guard", {
+working_villages.register_job("hades_villages:job_guard", {
 	description      = "guard (working_villages)",
 	long_description = "I'm here on guard defending against all those whom I see as enemies.",
 	inventory_image  = "default_paper.png^memorandum_letters.png", --TODO: sword/bow/shield

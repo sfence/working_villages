@@ -2,7 +2,7 @@ local init = os.clock()
 minetest.log("action", "["..minetest.get_current_modname().."] loading init") 
 
 working_villages={
-	modpath = minetest.get_modpath("working_villages"),
+	modpath = minetest.get_modpath("hades_villages"),
 }
 
 if not modutil then
@@ -56,3 +56,6 @@ end
 --ready
 local time_to_load= os.clock() - init
 log.action("loaded init in %.4f s", time_to_load)
+
+working_villages.require("hades")
+

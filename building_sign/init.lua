@@ -1,7 +1,7 @@
 local init = os.clock()
 minetest.log("action", "["..minetest.get_current_modname().."] loading...")
 
-local modpath = minetest.get_modpath("building_sign")
+local modpath = minetest.get_modpath("hades_building_sign")
 building_sign = {
   S = modutil.require("translations","venus")(),
   DEFAULT_NODE = {name="air"},
@@ -33,7 +33,7 @@ building_sign.require("forms")
 building_sign.require("areas")
 
 local S = building_sign.S
-minetest.register_node("building_sign:building_marker", {
+minetest.register_node("hades_building_sign:building_marker", {
 	description = S("marker_desc"),
 	drawtype = "nodebox",
 	tiles = {"default_sign_wall_wood.png"},
@@ -51,7 +51,7 @@ minetest.register_node("building_sign:building_marker", {
 		wall_side   = {-0.5, -0.3125, -0.4375, -0.4375, 0.3125, 0.4375},
 	},
 	groups = {choppy = 2, dig_immediate = 2, attached_node = 1},
-	sounds = default.node_sound_defaults(),
+	sounds = hades_sounds.node_sound_defaults(),
 	after_place_node = function(pos, placer)
 		local meta = minetest.get_meta(pos)
 		local owner = placer:get_player_name()
@@ -88,3 +88,6 @@ minetest.register_node("building_sign:building_marker", {
 
 local time_to_load= os.clock() - init
 log.action("loaded init in %.4f s", time_to_load)
+
+building_sign.require("hades")
+

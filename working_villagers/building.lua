@@ -317,7 +317,7 @@ local on_receive_fields = function(pos, _, fields, sender)
 	meta:set_string("formspec",working_villages.buildings.get_formspec(meta))
 end
 
-minetest.register_node("working_villages:building_marker", {
+minetest.register_node("hades_villages:building_marker", {
 	description = "building marker for working_villages",
 	drawtype = "nodebox",
 	tiles = {"default_sign_wall_wood.png"},
@@ -335,7 +335,7 @@ minetest.register_node("working_villages:building_marker", {
 		wall_side   = {-0.5, -0.3125, -0.4375, -0.4375, 0.3125, 0.4375},
 	},
 	groups = {choppy = 2, dig_immediate = 2, attached_node = 1},
-	sounds = default.node_sound_defaults(),
+	sounds = hades_sounds.node_sound_defaults(),
 	after_place_node = function(pos, placer)
 		local meta = minetest.get_meta(pos)
 		local owner = placer:get_player_name()
@@ -385,7 +385,7 @@ function working_villages.home:get_marker_meta()
 		minetest.get_voxel_manip():read_from_map(home_marker_pos, home_marker_pos)
 		--minetest.emerge_area(home_marker_pos, home_marker_pos) --Doesn't work
 	end
-	if minetest.get_node(home_marker_pos).name ~= "working_villages:building_marker" then
+	if minetest.get_node(home_marker_pos).name ~= "hades_villages:building_marker" then
 		if working_villages.debug_logging and not(vector.equals(home_marker_pos,{x=0,y=0,z=0})) then
 			minetest.log("warning", "The position of an non existant home was requested.")
 			minetest.log("warning", "Given home position:" .. minetest.pos_to_string(home_marker_pos))

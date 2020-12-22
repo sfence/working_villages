@@ -314,7 +314,7 @@ function func.villager_state_machine_job(job_name,job_description,actions, sprop
 			end
 		end
 	end
-	working_villages.register_job("working_villages:"..job_name, {
+	working_villages.register_job("hades_villages:"..job_name, {
 		description      = "working_villages job : "..job_description,
 		inventory_image  = "default_paper.png^memorandum_letters.png",
 		on_start         = on_start,

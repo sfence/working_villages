@@ -1,6 +1,6 @@
 local u = working_villages.require("util")
 
-minetest.register_tool("working_villages:neighbor_test_tool", {
+minetest.register_tool("hades_villages:neighbor_test_tool", {
   description = "neighbor test tool\nplaces wood in euclidean distance",
   inventory_image = "working_villages_commanding_sceptre.png",
   on_use = function(itemstack, user, pointed_thing)

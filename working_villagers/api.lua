@@ -591,7 +591,7 @@ end) ()
 -- register empty item entity definition.
 -- this entity may be hold by villager's hands.
 do
-  minetest.register_craftitem("working_villages:dummy_empty_craftitem", {
+  minetest.register_craftitem("hades_villages:dummy_empty_craftitem", {
     wield_image = "working_villages_dummy_empty_craftitem.png",
   })
 
@@ -603,7 +603,7 @@ do
 
       if working_villages.is_villager(luaentity.name) then
         self.object:set_attach(obj, "Arm_R", {x = 0.065, y = 0.50, z = -0.15}, {x = -45, y = 0, z = 0})
-        self.object:set_properties{textures={"working_villages:dummy_empty_craftitem"}}
+        self.object:set_properties{textures={"hades_villages:dummy_empty_craftitem"}}
         return
       end
     end
@@ -620,7 +620,7 @@ do
         if stack:get_name() ~= self.itemname then
           if stack:is_empty() then
             self.itemname = ""
-            self.object:set_properties{textures={"working_villages:dummy_empty_craftitem"}}
+            self.object:set_properties{textures={"hades_villages:dummy_empty_craftitem"}}
           else
             self.itemname = stack:get_name()
             self.object:set_properties{textures={self.itemname}}
@@ -634,7 +634,7 @@ do
     return
   end
 
-  minetest.register_entity("working_villages:dummy_item", {
+  minetest.register_entity("hades_villages:dummy_item", {
     hp_max		    = 1,
     visual		    = "wielditem",
     visual_size	  = {x = 0.025, y = 0.025},
@@ -649,7 +649,7 @@ end
 
 ---------------------------------------------------------------------
 
-working_villages.job_inv = minetest.create_detached_inventory("working_villages:job_inv", {
+working_villages.job_inv = minetest.create_detached_inventory("hades_villages:job_inv", {
   on_take = function(inv, listname, _, stack) --inv, listname, index, stack, player
     inv:add_item(listname,stack)
   end,
@@ -834,7 +834,7 @@ function working_villages.register_villager(product_name, def)
       create_inventory(self)
 
       -- attach dummy item to new villager.
-      minetest.add_entity(self.object:getpos(), "working_villages:dummy_item")
+      minetest.add_entity(self.object:getpos(), "hades_villages:dummy_item")
     else
       -- if static data is not empty string, this object has beed already created.
       local data = minetest.deserialize(staticdata)
@@ -932,12 +932,12 @@ function working_villages.register_villager(product_name, def)
   -- on_rightclick is a callback function that is called when a player right-click them.
   local function on_rightclick(self, clicker)
     local wielded_stack = clicker:get_wielded_item()
-    if wielded_stack:get_name() == "working_villages:commanding_sceptre"
+    if wielded_stack:get_name() == "hades_villages:commanding_sceptre"
       and clicker:get_player_name() == self.owner_name then
 
-      forms.show_formspec(self, "working_villages:inv_gui", clicker:get_player_name())
+      forms.show_formspec(self, "hades_villages:inv_gui", clicker:get_player_name())
     else
-      forms.show_formspec(self, "working_villages:talking_menu", clicker:get_player_name())
+      forms.show_formspec(self, "hades_villages:talking_menu", clicker:get_player_name())
     end
   end
 

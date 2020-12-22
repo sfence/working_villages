@@ -34,7 +34,7 @@ end
 
 local searching_range = {x = 10, y = 10, z = 10, h = 5}
 
-working_villages.register_job("working_villages:job_woodcutter", {
+working_villages.register_job("hades_villages:job_woodcutter", {
 	description      = "woodcutter (working_villages)",
 	long_description = "I look for any Tree trunks around and chop them down.\
 I might also chop down a house. Don't get angry please I'm not the best at my job.\

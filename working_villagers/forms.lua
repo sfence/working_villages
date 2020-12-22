@@ -44,7 +44,7 @@ function forms.show_formspec(villager, formname, playername)
 	local page = registered_forms[formname]
 	if page == nil then
 		log.warning("page %s not registered", formname)
-		page = registered_forms["working_villages:talking_menu"]
+		page = registered_forms["hades_villages:talking_menu"]
 	end
 	minetest.show_formspec(playername, formname.."_"..villager.inventory_name, page:constructor(villager, playername))
 	forms.villagers[villager.inventory_name] = villager
@@ -89,9 +89,9 @@ function forms.form_base(width,height,villager)
 	end
 
 	return "size["..width..","..height.."]"
-		.. default.gui_bg
-		.. default.gui_bg_img
-		.. default.gui_slots
+		--.. default.gui_bg
+		--.. default.gui_bg_img
+		--.. default.gui_slots
 		.. "label[0,0;"..jobname.."]"
 end
 
@@ -203,29 +203,29 @@ function forms.register_text_page(pageid,text_constructor)
 	})
 end
 
-forms.register_page("working_villages:job_change",{
+forms.register_page("hades_villages:job_change",{
 	constructor = function(_, villager) --self, villager, playername
 		local cp = { x = 3.5, y = 0 }
 		return "size[8,6]"
-			.. default.gui_bg
-			.. default.gui_bg_img
-			.. default.gui_slots
+			--.. default.gui_bg
+			--.. default.gui_bg_img
+			--.. default.gui_slots
 			.. "label[".. cp.x - 0.25 ..",".. cp.y ..";current job]"
 			.. "list[detached:".. villager.inventory_name ..";job;".. cp.x ..",".. cp.y + 0.5 ..";1,1;]"
-			.. "list[detached:working_villages:job_inv;main;0,2;8,4;]"
+			.. "list[detached:hades_villages:job_inv;main;0,2;8,4;]"
 			.. "listring[]"
 			.. "button[6,".. cp.y + 0.5 ..";1,1;back;back]"
 	end,
 	receiver = function(_, villager, sender, fields)
 		local sender_name = sender:get_player_name()
 		if fields.back then
-			forms.show_formspec(villager, "working_villages:inv_gui", sender_name)
+			forms.show_formspec(villager, "hades_villages:inv_gui", sender_name)
 			return
 		end
 	end
 })
 
-forms.register_page("working_villages:inv_gui", {
+forms.register_page("hades_villages:inv_gui", {
 	constructor = function(_, villager) --self, villager, playername
 		local home_pos = {x = 0, y = 0, z = 0}
 		if villager:has_home() then
@@ -241,9 +241,9 @@ forms.register_page("working_villages:inv_gui", {
 		local wp = { x = 4.25, y = 0}
 		local hp = { x = 4.3, y = 3}
 		return "size[8,9]"
-			.. default.gui_bg
-			.. default.gui_bg_img
-			.. default.gui_slots
+			--.. default.gui_bg
+			--.. default.gui_bg_img
+			--.. default.gui_slots
 			.. "list[detached:"..villager.inventory_name..";main;0,0;4,4;]"
 			.. "list[current_player;main;0,5;8,1;]"
 			.. "list[current_player;main;0,6.2;8,3;8]"
@@ -259,7 +259,7 @@ forms.register_page("working_villages:inv_gui", {
 	receiver = function(_, villager, sender, fields)
 		local sender_name = sender:get_player_name()
 		if fields.job then
-			forms.show_formspec(villager, "working_villages:job_change", sender_name)
+			forms.show_formspec(villager, "hades_villages:job_change", sender_name)
 			return
 		end
 		if fields.home_pos == nil then
@@ -278,7 +278,7 @@ forms.register_page("working_villages:inv_gui", {
 				"do not exist in our coordinate system. Correct coordinates range from -30912 to 30927 in all axes.")
 			return
 		end
-		if minetest.get_node(coords).name ~= "working_villages:building_marker" then
+		if minetest.get_node(coords).name ~= "hades_villages:building_marker" then
 			minetest.chat_send_player(sender_name, 'No home marker could be found at the entered position.')
 			return
 		end

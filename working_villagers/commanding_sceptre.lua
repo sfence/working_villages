@@ -1,4 +1,4 @@
-minetest.register_tool("working_villages:commanding_sceptre", {
+minetest.register_tool("hades_villages:commanding_sceptre", {
 	description = "villager commanding sceptre",
 	inventory_image = "working_villages_commanding_sceptre.png",
 	on_use = function(itemstack, user, pointed_thing)

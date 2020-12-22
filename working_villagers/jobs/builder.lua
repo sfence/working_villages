@@ -2,7 +2,7 @@ local func = working_villages.require("jobs/util")
 local co_command = working_villages.require("job_coroutines").commands
 
 local function find_building(p)
-	if minetest.get_node(p).name ~= "working_villages:building_marker" then
+	if minetest.get_node(p).name ~= "hades_villages:building_marker" then
 		return false
 	end
 	local meta = minetest.get_meta(p)
@@ -20,7 +20,7 @@ local function find_building(p)
 end
 local searching_range = {x = 10, y = 6, z = 10}
 
-working_villages.register_job("working_villages:job_builder", {
+working_villages.register_job("hades_villages:job_builder", {
 	description      = "builder (working_villages)",
 	long_description = "I look for the nearest building marker with a started building site. "..
 "There I'll help building up the building.\
